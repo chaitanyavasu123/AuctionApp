@@ -1,0 +1,78 @@
+.auction-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .products-list,
+  .selected-products {
+    margin-top: 20px;
+  }
+  
+  .products-list ul,
+  .selected-products ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .products-list li,
+  .selected-products li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  button[type="button"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+  }
+  
+  button[type="button"]:hover,
+  button[type="submit"]:hover {
+    opacity: 0.9;
+  }
+  #back{
+    width:5px;
+    height:10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: black;
+  }
+  

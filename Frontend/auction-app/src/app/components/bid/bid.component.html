@@ -1,0 +1,16 @@
+<div class="bid-container">
+  <button routerLink="/user-home" id="back">&times;</button>
+  <h2>Bidding on {{ product.name }}</h2>
+  <p>Current highest bid: {{ product.startingPrice }}</p>
+
+  <label for="bidAmount">Enter your bid amount:</label>
+  <input
+    type="number"
+    id="bidAmount"
+    [(ngModel)]="bidAmount"
+    min="{{ product.startingPrice + 1 }}"
+    step="any"
+  />
+
+  <button (click)="submitBid()">Submit Bid</button>
+</div>

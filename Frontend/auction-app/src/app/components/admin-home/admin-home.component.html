@@ -1,0 +1,41 @@
+<div class="admin-home">
+  <div>
+    <h1>Admin Dashboard</h1>
+    <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+  </div>
+  <div class="auction-cards">
+    <h2>Ongoing Auctions</h2>
+    <div *ngIf="ongoingAuctions.length === 0">
+      No ongoing auctions available.
+    </div>
+    <div *ngFor="let auction of ongoingAuctions" class="auction-card">
+      <h3>{{ auction.title }}</h3>
+      <p>{{ auction.description }}</p>
+      <p>Start Time: {{ auction.startTime | date : "short" }}</p>
+      <p>End Time: {{ auction.endTime | date : "short" }}</p>
+      <button (click)="deleteAuction(auction.id)">Delete</button>
+      <!-- <button (click)="suspendAuction(auction.id)">Suspend</button> -->
+      <!-- <button (click)="banAuction(auction.id)">Ban</button> -->
+      <button [routerLink]="['/view-participation', auction.id]">
+        View Participation
+      </button>
+    </div>
+  </div>
+
+  <div class="auction-cards">
+    <h2>Completed Auctions</h2>
+    <div *ngIf="completedAuctions.length === 0">
+      No completed auctions available.
+    </div>
+    <div *ngFor="let auction of completedAuctions" class="auction-card">
+      <h3>{{ auction.title }}</h3>
+      <p>{{ auction.description }}</p>
+      <p>Start Time: {{ auction.startTime | date : "short" }}</p>
+      <p>End Time: {{ auction.endTime | date : "short" }}</p>
+      <button (click)="deleteAuction(auction.id)">Delete</button>
+      <button (click)="viewUserParticipation(auction.id)">
+        View Participation
+      </button>
+    </div>
+  </div>
+</div>

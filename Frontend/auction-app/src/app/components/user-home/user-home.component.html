@@ -1,0 +1,96 @@
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="searchAuctions()"
+    placeholder="Search for products or categories..."
+  />
+
+  <!-- <button (click)="filterAuctionsByPrice('asc')">
+    Sort by Price (Low to High)
+  </button>
+  <button (click)="filterAuctionsByPrice('desc')">
+    Sort by Price (High to Low)
+  </button> -->
+  <button
+    (click)="filterAuctionsByTime('asc')"
+    style="background-color: blueviolet"
+  >
+    Sort by Time (Sooner)
+  </button>
+  <button
+    (click)="filterAuctionsByTime('desc')"
+    style="background-color: blueviolet"
+  >
+    Sort by Time (Later)
+  </button>
+  <button routerLink="/create-auction">Create Auction</button>
+  <button routerLink="/add-product">Add Product</button>
+  <div class="card">
+    <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+  </div>
+</div>
+<div class="major-container">
+  <div class="sidebar">
+    <div class="sidebar-mini">
+      <h3>Your Bids</h3>
+      <div *ngIf="userBids.length === 0">
+        <p>You haven't Bid yet</p>
+      </div>
+      <div *ngFor="let bid of userBids" class="product1">
+        <h5>Bid Amount : {{ bid.amount }}</h5>
+        <h6>Product name : {{ bid.product.name }}</h6>
+      </div>
+    </div>
+    <!-- Display user's bids -->
+    <div class="sidebar-mini">
+      <h3>Your Auctions</h3>
+      <div *ngFor="let auction of userAuctions" class="product1">
+        <h5>Auction name: {{ auction.title }}</h5>
+
+        <p>
+          Start time : {{ auction.startTime }} - End Time :{{ auction.endTime }}
+        </p>
+
+        <div *ngIf="auction.products && auction.products.length > 0">
+          <h4>Products:</h4>
+          <ul>
+            <li *ngFor="let product of auction.products">{{ product.name }}</li>
+          </ul>
+        </div>
+        <div *ngIf="!auction.products || auction.products.length === 0">
+          <p>No products available for this auction.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="auction">
+    <div class="mini-container">
+      <h3>Auctions to Join</h3>
+      <div *ngFor="let auction of auctionsToParticipate">
+        <div class="auction-mini">
+          <h3>{{ auction.title }}</h3>
+          <p>{{ auction.description }}</p>
+          <p>Time remaining: {{ auctionTimers[auction.id] }}</p>
+
+          <div *ngFor="let product of auction.products" class="product">
+            <h4>{{ product.name }}</h4>
+            <p>Current highest bid: {{ product.startingPrice }}</p>
+            <button [routerLink]="['/bid', product.id]">Bid</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mini-container">
+      <h3>Your Bought Products</h3>
+      <div *ngFor="let product of boughtProducts.boughtProducts">
+        <div class="auction-mini">
+          <h4>product name: {{ product.name }}</h4>
+          <h4>Amount paid: ${{ product.startingPrice }}</h4>
+          <h4>category : {{ product.category }}</h4>
+          <p>description : {{ product.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

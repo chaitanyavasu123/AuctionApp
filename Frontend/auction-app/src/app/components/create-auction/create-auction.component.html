@@ -1,0 +1,68 @@
+<div class="auction-form-container" style="background-color: azure">
+  <button routerLink="/user-home" id="back">&times;</button>
+  <h2>Create Auction</h2>
+
+  <form [formGroup]="auctionForm" (ngSubmit)="createAuction()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" formControlName="title" type="text" required />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="startTime">Start Time</label>
+      <input
+        id="startTime"
+        formControlName="startTime"
+        type="datetime-local"
+        [min]="currentDateTime"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="endTime">End Time</label>
+      <input
+        id="endTime"
+        formControlName="endTime"
+        type="datetime-local"
+        [min]="currentDateTime"
+        required
+      />
+    </div>
+
+    <div class="products-list">
+      <h3>Select Products</h3>
+      <ul>
+        <li *ngFor="let product of products">
+          <span>{{ product.name }} (Category: {{ product.category }})</span>
+          <button type="button" (click)="addToAuction(product)">
+            Add to Auction
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="selected-products">
+      <h3>Selected Products</h3>
+      <ul>
+        <li *ngFor="let product of selectedProducts">
+          <span>{{ product.name }} (Category: {{ product.category }})</span>
+          <button type="button" (click)="removeFromAuction(product)">
+            Remove
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <button type="submit">Create Auction</button>
+  </form>
+</div>

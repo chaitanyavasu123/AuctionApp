@@ -1,0 +1,47 @@
+.bid-container {
+  position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .bid-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .bid-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .bid-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .bid-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #back{
+    width:5px;
+    height:10px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: black;
+  }
+  

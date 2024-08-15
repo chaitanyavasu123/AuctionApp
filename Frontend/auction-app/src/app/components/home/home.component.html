@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <span>Ongoing Auctions</span>
+  <span class="spacer"></span>
+  <button mat-button color="accent" (click)="navigateToLogin()">Login</button>
+</mat-toolbar>
+
+<div class="container">
+  <h3>Login to Participate in Auctions</h3>
+  <mat-card *ngFor="let auction of auctions" class="auction-card">
+    <mat-card-header>
+      <mat-card-title>{{ auction.title }}</mat-card-title>
+      <!-- <mat-card-subtitle
+        >Highest Bid: {{ auction.highestBid | currency }}</mat-card-subtitle
+      > -->
+      <mat-card-subtitle>
+        <p>{{ auction.description }}</p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="auction.products && auction.products.length > 0">
+        <h3>Products in this Auction:</h3>
+        <dl>
+          <ng-container *ngFor="let product of auction.products">
+            <div class="product">
+              <dt>{{ product.name }}-${{ product.startingPrice }}</dt>
+              <dd>{{ product.description }}</dd>
+            </div>
+          </ng-container>
+        </dl>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
